@@ -26,8 +26,16 @@ contract Task2 with Deployable {
   }
   
   receive(msg: Refund) {
+
   }
 
   receive(msg: Slice) {
+    send(SendParameters{
+        value: msg.loadCoins(),
+        to: self.admin,
+        mode: SendIgnoreErrors, 
+        bounce: true, 
+        body : msg.asCell()
+    });
   }
 }
