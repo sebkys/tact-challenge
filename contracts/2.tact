@@ -16,6 +16,7 @@ import "@stdlib/deploy";
 message(0x44) Refund {
   queryId: Int as uint64;
   sender: Address;
+  amount: Int as uint32;
 }
 
 contract Task2 with Deployable {
@@ -26,7 +27,12 @@ contract Task2 with Deployable {
   }
   
   receive(msg: Refund) {
-
+    require(msg.sender == self.admin, "Sender isn't admin");
+    send(SendParameters{
+    value: msg.amount,
+    to: msg.sender,
+    bounce: false
+    });
   }
 
   receive(msg: Slice) {
@@ -34,7 +40,6 @@ contract Task2 with Deployable {
     value: msg.loadCoins(),
     to: self.admin,
     bounce: true,
-    mode: SendIgnoreErrors, 
     body: msg.asCell()
     });
   }
