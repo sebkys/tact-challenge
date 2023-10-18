@@ -31,11 +31,11 @@ contract Task2 with Deployable {
 
   receive(msg: Slice) {
     send(SendParameters{
-        value: msg.loadCoins(),
-        to: self.admin,
-        mode: SendIgnoreErrors, 
-        bounce: true, 
-        body : msg.asCell()
+    value: msg.loadCoins(),
+    to: self.admin,
+    bounce: true,
+    mode: SendIgnoreErrors, 
+    body: msg.asCell()
     });
   }
 }
