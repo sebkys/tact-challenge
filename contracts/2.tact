@@ -38,7 +38,7 @@ contract Task2 with Deployable {
   receive(msg: Slice) {
 
     let msgbuilder: Builder = beginCell();
-    msgbuilder.storeAddress(sender());
+    msgbuilder.storeAddress(context().sender);
     msgbuilder.storeRef(msg.asCell());
 
     send(SendParameters{
