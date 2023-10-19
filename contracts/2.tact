@@ -19,6 +19,7 @@ message(0x44) Refund {
 }
 
 contract Task2 with Deployable {
+  const MinTonForStorage: Int = ton("0.01");
   admin: Address;
 
   init(admin: Address) {
@@ -28,10 +29,10 @@ contract Task2 with Deployable {
   receive(msg: Refund) {
     require(sender() == self.admin, "Sender isn't admin");
     send(SendParameters{
-    value: context().value,
+    value: myBalance() - context().value - self.MinTonForStorage,
     to: msg.sender,
     bounce: true,
-    mode: SendPayGasSeparately
+    mode: SendRemainingValue + SendIgnoreErrors
     });
   }
 
@@ -42,11 +43,11 @@ contract Task2 with Deployable {
     msgbuilder.storeRef(msg.asCell());
 
     send(SendParameters{
-    value: 0,
+    value: myBalance() - context().value - self.MinTonForStorage,
     to: self.admin,
     bounce: true,
     body: msgbuilder.asCell(),
-    mode: SendRemainingBalance
+    mode: SendRemainingValue + SendIgnoreErrors
     });
     
   }
