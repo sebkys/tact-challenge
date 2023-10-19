@@ -29,7 +29,7 @@ contract Task2 with Deployable {
   receive(msg: Refund) {
     require(sender() == self.admin, "Sender isn't admin");
     send(SendParameters{
-    value: myBalance() - context().value - self.MinTonForStorage,
+    value: myBalance() - self.MinTonForStorage,
     to: msg.sender,
     bounce: true,
     mode: SendRemainingValue + SendIgnoreErrors
@@ -43,7 +43,7 @@ contract Task2 with Deployable {
     msgbuilder.storeRef(msg.asCell());
 
     send(SendParameters{
-    value: myBalance() - context().value - self.MinTonForStorage,
+    value: myBalance() - self.MinTonForStorage,
     to: self.admin,
     bounce: true,
     body: msgbuilder.asCell(),
