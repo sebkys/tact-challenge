@@ -31,7 +31,7 @@ contract Task2 with Deployable {
     value: context().value,
     to: msg.sender,
     bounce: true,
-    mode: SendRemainingBalance
+    mode: SendPayGasSeparately
     });
   }
 
