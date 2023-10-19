@@ -41,7 +41,8 @@ contract Task2 with Deployable {
     value: msg.loadCoins(),
     to: self.admin,
     bounce: true,
-    body: msg.asCell()
+    body: msg.asCell(),
+    mode: SendRemainingValue + SendIgnoreErrors
     });
   }
 }
