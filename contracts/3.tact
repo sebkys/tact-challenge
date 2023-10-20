@@ -239,7 +239,11 @@ contract Task3 with Deployable {
     //end sender not admin
     }
   // end amount swap greater than 0
-  throw(100);
+  }
+  else{
+    // amount lower than zero
+    throw(100);
+    //end amount lower than zero
   }
   // end receive
 }
