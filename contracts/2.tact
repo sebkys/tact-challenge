@@ -16,10 +16,10 @@ import "@stdlib/deploy";
 message(0x44) Refund {
   queryId: Int as uint64;
   sender: Address;
+  amount : Int as uint64;
 }
 
 contract Task2 with Deployable {
-  const MinTonForStorage: Int = ton("0.01");
   admin: Address;
 
   init(admin: Address) {
