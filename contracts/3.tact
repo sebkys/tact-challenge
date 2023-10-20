@@ -82,7 +82,7 @@ contract Task3 with Deployable {
           bounce: true,
           mode: SendRemainingValue + SendIgnoreErrors,
           body: TokenTransfer{
-            queryId : msg.queryId,
+            queryId : 0,
             amount: msg.amount,
             destination: sender(),
             responseDestination: myAddress(),
@@ -103,7 +103,7 @@ contract Task3 with Deployable {
           bounce: true,
           mode: SendRemainingValue + SendIgnoreErrors,
           body: TokenTransfer{
-            queryId : msg.queryId,
+            queryId : 0,
             amount: received,
             destination: sender(),
             responseDestination: myAddress(),
@@ -123,7 +123,7 @@ contract Task3 with Deployable {
           bounce: true,
           mode: SendRemainingValue + SendIgnoreErrors,
           body: TokenTransfer{
-            queryId : msg.queryId,
+            queryId : 0,
             amount: msg.amount,
             destination: sender(),
             responseDestination: myAddress(),
@@ -143,7 +143,7 @@ contract Task3 with Deployable {
           bounce: true,
           mode: SendRemainingValue + SendIgnoreErrors,
           body: TokenTransfer{
-            queryId : msg.queryId,
+            queryId : 0,
             amount: received,
             destination: sender(),
             responseDestination: myAddress(),
@@ -163,7 +163,7 @@ contract Task3 with Deployable {
           bounce: true,
           mode: SendRemainingValue + SendIgnoreErrors,
           body: TokenTransfer{
-            queryId : msg.queryId,
+            queryId : 0,
             amount: msg.amount,
             destination: sender(),
             responseDestination: myAddress(),
