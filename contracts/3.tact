@@ -68,11 +68,30 @@ contract Task3 with Deployable {
   }
 
   receive(msg: TokenNotification) {
+
   } 
   
   get fun price(jetton: Address): Int { 
+    if (jetton == self.jettonAddressA) {
+      return(self.aAmount * self.decimal / self.bAmount);
+    } 
+    else if (jetton == self.jettonAddressB) {
+      return(self.bAmount * self.decimal / self.aAmount);
+    }
+    else {
+      dump("jetton unavailable");
+    }
   }
   
   get fun balance(jetton: Address): Int { 
+    if (jetton == self.jettonAddressA) {
+      return self.aAmount;
+    }
+    else if (jetton == self.jettonAddressB) {
+      return self.bAmount;
+    }
+    else{
+      dump("jetton unavailable");
+    }
   }
 }
