@@ -187,9 +187,9 @@ contract Task3 with Deployable {
     else if (jetton == self.jettonAddressB) {
       return(self.bAmount * self.decimal / self.aAmount);
     }
-    else {
-      dump("jetton unavailable");
-    }
+    // else {
+    //   dump("jetton unavailable");
+    // }
   }
   
   get fun balance(jetton: Address): Int { 
@@ -199,8 +199,8 @@ contract Task3 with Deployable {
     else if (jetton == self.jettonAddressB) {
       return self.bAmount;
     }
-    else{
-      dump("jetton unavailable");
-    }
+    // else{
+    //   dump("jetton unavailable");
+    // }
   }
 }
