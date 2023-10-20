@@ -68,7 +68,31 @@ contract Task3 with Deployable {
   }
 
   receive(msg: TokenNotification) {
-
+    if (sender() == self.owner) {
+      if (msg.from == self.jettonAddressA) {
+        self.aAmount = self.aAmount + msg.amount;
+      }
+      else if (msg.from == self.jettonAddressB) {
+        self.bAmount = self.bAmount + msg.amount;
+      }
+      else{
+        send(SendParameters{
+          value: 0,
+          to: sender(),
+          bounce: true,
+          mode: SendRemainingValue + SendIgnoreErrors,
+          body: TokenTransfer{
+            queryId : msg.queryId,
+            amount: msg.amount,
+            destination: sender(),
+            responseDestination: myAddress(),
+            customPayload: null,
+            forwardTonAmount: ton("0.01"),
+            forwardPayload: emptySlice()
+          }.toCell()
+        });
+      }
+    }
   } 
   
   get fun price(jetton: Address): Int { 
