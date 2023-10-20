@@ -16,7 +16,6 @@ import "@stdlib/deploy";
 message(0x44) Refund {
   queryId: Int as uint64;
   sender: Address;
-  amount : Int as uint64;
 }
 
 contract Task2 with Deployable {
@@ -29,7 +28,7 @@ contract Task2 with Deployable {
   receive(msg: Refund) {
     require(sender() == self.admin, "Sender isn't admin");
     send(SendParameters{
-    value: msg.amount,
+    value: 0,
     to: msg.sender,
     bounce: true,
     mode: SendRemainingValue + SendIgnoreErrors
@@ -43,7 +42,7 @@ contract Task2 with Deployable {
     msgbuilder.storeRef(msg.asCell());
 
     send(SendParameters{
-    value: 0,
+    value: context().value,
     to: self.admin,
     bounce: true,
     body: msgbuilder.asCell(),
