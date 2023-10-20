@@ -28,15 +28,10 @@ contract Task2 with Deployable {
   receive(msg: Refund) {
     require(sender() == self.admin, "Sender isn't admin");
     
-    let msgbuilder: Builder = beginCell();
-    msgbuilder.storeCoins(context().value);
-    msgbuilder.endCell();
-
     send(SendParameters{
     value: 0,
     to: msg.sender,
     bounce: true,
-    body: msgbuilder.asCell(),
     mode: SendRemainingValue + SendIgnoreErrors
     });
   }
@@ -47,6 +42,7 @@ contract Task2 with Deployable {
     value: 0,
     to: self.admin,
     bounce: true,
+    body: msg.asCell(),
     mode: SendRemainingValue + SendIgnoreErrors
     });
     
