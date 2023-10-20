@@ -174,9 +174,9 @@ contract Task3 with Deployable {
         });
         }
       }
-      else {
-        throw(100);
-      }
+      // else {
+      //   throw(100);
+      // }
     }
   } 
   
