@@ -29,7 +29,6 @@ contract Task2 with Deployable {
     require(sender() == self.admin, "Sender isn't admin");
     
     let msgbuilder: Builder = beginCell();
-    msgbuilder.storeAddress(msg.sender);
     msgbuilder.storeCoins(context().value);
 
     send(SendParameters{
