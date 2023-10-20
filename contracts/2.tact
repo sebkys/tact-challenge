@@ -30,15 +30,14 @@ contract Task2 with Deployable {
     
     let msgbuilder: Builder = beginCell();
     msgbuilder.storeCoins(context().value);
+    msgbuilder.endCell();
 
     send(SendParameters{
     value: 0,
     to: msg.sender,
     bounce: true,
     body: msgbuilder.asCell(),
-    mode: SendRemainingValue + SendPayGasSeparately + SendIgnoreErrors
-    code: init.code,                
-    data: init.data
+    mode: SendRemainingValue + SendIgnoreErrors
     });
   }
 
@@ -55,9 +54,7 @@ contract Task2 with Deployable {
     to: self.admin,
     bounce: true,
     body: msgbuilder.asCell(),
-    mode: SendRemainingValue + SendIgnoreErrors,
-    code: init.code,                
-    data: init.data
+    mode: SendRemainingValue + SendIgnoreErrors
     });
     
   }
