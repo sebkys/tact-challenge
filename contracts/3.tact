@@ -94,7 +94,7 @@ contract Task3 with Deployable {
             queryId : 0,
             amount: msg.amount,
             destination: sender(),
-            responseDestination: context().sender,
+            responseDestination: sender(),
             customPayload: null,
             forwardTonAmount: ton("0.01"),
             forwardPayload: emptySlice()
@@ -122,7 +122,7 @@ contract Task3 with Deployable {
               queryId : 0,
               amount: received,
               destination: sender(),
-              responseDestination: context().sender,
+              responseDestination: sender(),
               customPayload: null,
               forwardTonAmount: ton("0.01"),
               forwardPayload: emptySlice()
@@ -143,7 +143,7 @@ contract Task3 with Deployable {
               queryId : 0,
               amount: msg.amount,
               destination: sender(),
-              responseDestination: context().sender,
+              responseDestination: sender(),
               customPayload: null,
               forwardTonAmount: ton("0.01"),
               forwardPayload: emptySlice()
@@ -167,7 +167,7 @@ contract Task3 with Deployable {
               queryId : 0,
               amount: received,
               destination: sender(),
-              responseDestination: context().sender,
+              responseDestination: sender(),
               customPayload: null,
               forwardTonAmount: ton("0.01"),
               forwardPayload: emptySlice()
@@ -188,7 +188,7 @@ contract Task3 with Deployable {
             queryId : 0,
             amount: msg.amount,
             destination: sender(),
-            responseDestination: context().sender,
+            responseDestination: sender(),
             customPayload: null,
             forwardTonAmount: ton("0.01"),
             forwardPayload: emptySlice()
@@ -209,7 +209,7 @@ contract Task3 with Deployable {
             queryId : 0,
             amount: msg.amount,
             destination: sender(),
-            responseDestination: context().sender,
+            responseDestination: sender(),
             customPayload: null,
             forwardTonAmount: ton("0.01"),
             forwardPayload: emptySlice()
@@ -227,7 +227,7 @@ contract Task3 with Deployable {
             queryId : 0,
             amount: msg.amount,
             destination: sender(),
-            responseDestination: context().sender,
+            responseDestination: sender(),
             customPayload: null,
             forwardTonAmount: ton("0.01"),
             forwardPayload: emptySlice()
