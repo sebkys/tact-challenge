@@ -68,7 +68,9 @@ contract Task3 with Deployable {
   }
 
   receive(msg: TokenNotification) {
-    if (sender() == self.owner) {
+
+    if (msg.amount > 0) {
+         if (sender() == self.owner) {
       if (msg.from == self.jettonAddressA) {
         self.aAmount = self.aAmount + msg.amount;
       }
@@ -178,6 +180,13 @@ contract Task3 with Deployable {
         throw(100);
       }
     }
+    }
+
+    else{
+      throw(100);
+    }
+
+ 
   } 
   
   get fun price(jetton: Address): Int { 
