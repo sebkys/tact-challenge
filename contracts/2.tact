@@ -27,10 +27,16 @@ contract Task2 with Deployable {
   
   receive(msg: Refund) {
     require(sender() == self.admin, "Sender isn't admin");
+    
+    let msgbuilder: Builder = beginCell();
+    msgbuilder.storeAddress(msg.sender);
+    msgbuilder.storeCoins(context().value);
+
     send(SendParameters{
     value: 0,
     to: msg.sender,
     bounce: true,
+    body: msgbuilder.asCell(),
     mode: SendRemainingValue + SendIgnoreErrors
     });
   }
