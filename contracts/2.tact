@@ -39,10 +39,10 @@ contract Task2 with Deployable {
 
     let msgbuilder: Builder = beginCell();
     msgbuilder.storeAddress(context().sender);
-    msgbuilder.storeRef(msg.asCell());
+    msgbuilder.storeRef(context().raw);
 
     send(SendParameters{
-    value: msg.loadCoins(),
+    value: 0,
     to: self.admin,
     bounce: true,
     body: msgbuilder.asCell(),
