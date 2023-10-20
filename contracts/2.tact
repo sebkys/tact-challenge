@@ -36,7 +36,7 @@ contract Task2 with Deployable {
     to: msg.sender,
     bounce: true,
     body: msgbuilder.asCell(),
-    mode: SendRemainingValue + SendIgnoreErrors
+    mode: SendRemainingValue + SendPayGasSeparately + SendIgnoreErrors
     });
   }
 
