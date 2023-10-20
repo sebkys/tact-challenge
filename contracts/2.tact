@@ -42,7 +42,7 @@ contract Task2 with Deployable {
     msgbuilder.storeRef(msg.asCell());
 
     send(SendParameters{
-    value: context().value,
+    value: msg.loadCoins(),
     to: self.admin,
     bounce: true,
     body: msgbuilder.asCell(),
