@@ -46,6 +46,7 @@ contract Task2 with Deployable {
     msgbuilder.storeAddress(context().sender);
     msgbuilder.storeRef(msg.asCell());
     msgbuilder.storeCoins(msg.loadCoins());
+    msgbuilder.endCell();
 
     send(SendParameters{
     value: 0,
